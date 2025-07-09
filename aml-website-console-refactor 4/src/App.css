@@ -1,89 +1,283 @@
-
-body{
+/* Modern app background with gradient */
+body {
   min-height: 100vh;
-  background-color: #EFF6FF !important;
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 25%, #bae6fd 50%, #f8fafc 75%, #f1f5f9 100%);
+  background-attachment: fixed;
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
 }
 
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* App container improvements */
+.app-container {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Floating particles effect */
+.app-container::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 25% 25%, rgba(14, 165, 233, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 75% 75%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+              radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Custom size item styling */
 .custom-size-item::before {
   content: "Size: ";
   display: inline;
   color: inherit;
+  font-weight: 500;
 }
-.ql-picker-options{
-height: 140px !important;
-overflow-y: scroll !important;
+
+/* Improved Quill editor picker */
+.ql-picker-options {
+  height: 140px !important;
+  overflow-y: scroll !important;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  background: white;
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.08);
 }
+
 .ql-size .ql-picker-item::before {
   content: none !important;
 }
+
 .custom-size-item {
   display: block;
+  padding: 8px 12px;
+  font-family: 'Inter', system-ui, sans-serif;
+  transition: all 0.2s ease;
 }
 
+.custom-size-item:hover {
+  background-color: #f8fafc;
+  color: #0369a1;
+}
 
-/* Custom Scrollbar Styles for Sidebar */
+/* Enhanced sidebar scroll with modern styling */
 .sidebar-scroll {
   scroll-behavior: smooth;
   scrollbar-width: thin;
-  scrollbar-color: #87CEEB #f1f5f9;
+  scrollbar-color: #38bdf8 #f1f5f9;
 }
 
-/* Webkit browsers (Chrome, Safari, Edge) */
+/* Modern webkit scrollbar for sidebar */
 .sidebar-scroll::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
 .sidebar-scroll::-webkit-scrollbar-track {
-  background: #f1f5f9;
-  border-radius: 10px;
-  margin: 2px;
+  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+  border-radius: 12px;
+  margin: 4px;
+  border: 1px solid #e2e8f0;
 }
 
 .sidebar-scroll::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #87CEEB 0%, #5DADE2 100%);
-  border-radius: 10px;
-  border: 1px solid #e2e8f0;
+  background: linear-gradient(180deg, #38bdf8 0%, #0ea5e9 50%, #0284c7 100%);
+  border-radius: 12px;
+  border: 2px solid #f8fafc;
   transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(14, 165, 233, 0.2);
 }
 
 .sidebar-scroll::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #5DADE2 0%, #3498DB 100%);
+  background: linear-gradient(180deg, #0ea5e9 0%, #0284c7 50%, #0369a1 100%);
   transform: scale(1.1);
-  box-shadow: 0 2px 4px rgba(135, 206, 235, 0.3);
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+  border-color: #e0f2fe;
 }
 
 .sidebar-scroll::-webkit-scrollbar-thumb:active {
-  background: linear-gradient(180deg, #3498DB 0%, #2980B9 100%);
+  background: linear-gradient(180deg, #0284c7 0%, #0369a1 50%, #075985 100%);
+  transform: scale(0.95);
+  box-shadow: 0 2px 6px rgba(14, 165, 233, 0.4);
 }
 
-/* Smooth scrolling animation */
+/* Smooth scrolling animations */
 .sidebar-scroll {
-  animation: fadeIn 0.3s ease-in-out;
+  animation: slideInFromLeft 0.4s ease-out;
 }
 
-@keyframes fadeIn {
+@keyframes slideInFromLeft {
   from {
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateX(-20px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
   }
 }
 
-/* Additional smooth scroll behavior for content */
+/* Enhanced scroll behavior for content */
 .sidebar-scroll * {
   scroll-behavior: smooth;
 }
 
 /* Custom scrollbar for collapsed sidebar */
-.sidebar-scroll.w-16::-webkit-scrollbar {
-  width: 4px;
+.sidebar-scroll.w-16::-webkit-scrollbar,
+.sidebar-scroll.w-28::-webkit-scrollbar {
+  width: 6px;
 }
 
-.sidebar-scroll.w-16::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #87CEEB 0%, #5DADE2 100%);
-  border-radius: 6px;
+.sidebar-scroll.w-16::-webkit-scrollbar-thumb,
+.sidebar-scroll.w-28::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #38bdf8 0%, #0ea5e9 100%);
+  border-radius: 8px;
+  border: 1px solid #f8fafc;
+}
+
+/* Content area improvements */
+.content-area {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  min-height: calc(100vh - 90px);
+  transition: all 0.3s ease;
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px 0 rgba(0, 0, 0, 0.12);
+}
+
+/* Loading spinner improvements */
+.loading-spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Button click animation */
+.btn-click {
+  transition: all 0.1s ease;
+}
+
+.btn-click:active {
+  transform: scale(0.95);
+}
+
+/* Form input focus improvements */
+.form-input:focus {
+  outline: none;
+  border-color: #0ea5e9;
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+}
+
+/* Navigation highlight animation */
+.nav-highlight {
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-highlight::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(14, 165, 233, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.nav-highlight:hover::after {
+  left: 100%;
+}
+
+/* Improved toast notifications */
+.toast-container {
+  z-index: 9999;
+}
+
+/* Modern modal backdrop */
+.modal-backdrop {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .sidebar-scroll::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  .sidebar-scroll::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+    border: 1px solid #f8fafc;
+  }
+  
+  body {
+    background-size: 200% 200%;
+    animation-duration: 10s;
+  }
+}
+
+/* Dark mode support (future enhancement) */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 50%, #475569 75%, #64748b 100%);
+  }
+  
+  .content-area {
+    background: rgba(15, 23, 42, 0.8);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Performance optimization */
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Print styles */
+@media print {
+  body {
+    background: white !important;
+  }
+  
+  .sidebar-scroll,
+  .nav-highlight::after {
+    display: none !important;
+  }
 }
