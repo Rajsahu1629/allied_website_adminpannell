@@ -1,0 +1,89 @@
+
+body{
+  min-height: 100vh;
+  background-color: #EFF6FF !important;
+}
+
+.custom-size-item::before {
+  content: "Size: ";
+  display: inline;
+  color: inherit;
+}
+.ql-picker-options{
+height: 140px !important;
+overflow-y: scroll !important;
+}
+.ql-size .ql-picker-item::before {
+  content: none !important;
+}
+.custom-size-item {
+  display: block;
+}
+
+
+/* Custom Scrollbar Styles for Sidebar */
+.sidebar-scroll {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #87CEEB #f1f5f9;
+}
+
+/* Webkit browsers (Chrome, Safari, Edge) */
+.sidebar-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.sidebar-scroll::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 10px;
+  margin: 2px;
+}
+
+.sidebar-scroll::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #87CEEB 0%, #5DADE2 100%);
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+}
+
+.sidebar-scroll::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #5DADE2 0%, #3498DB 100%);
+  transform: scale(1.1);
+  box-shadow: 0 2px 4px rgba(135, 206, 235, 0.3);
+}
+
+.sidebar-scroll::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(180deg, #3498DB 0%, #2980B9 100%);
+}
+
+/* Smooth scrolling animation */
+.sidebar-scroll {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Additional smooth scroll behavior for content */
+.sidebar-scroll * {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar for collapsed sidebar */
+.sidebar-scroll.w-16::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar-scroll.w-16::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #87CEEB 0%, #5DADE2 100%);
+  border-radius: 6px;
+}

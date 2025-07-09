@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+button{
+    cursor: pointer;
+}
+
+/* Add styles for react-icons */
+svg {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.react-icons {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.quill .ql-container {
+  height: auto !important;
+  min-height: 200px;
+}
+.quill .ql-editor {
+  height: auto !important;
+  overflow: visible !important;
+}
+
+.ql-size .ql-picker-item.custom-size-item::before {
+  content: attr(data-value);
+}
+.ql-picker-options {
+  z-index: 9999 !important;
+}
+
+.ql-toolbar {
+  position: relative;
+  z-index: 10;
+}
