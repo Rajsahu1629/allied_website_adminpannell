@@ -1,39 +1,271 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-button{
+/* Base styles with better defaults */
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-feature-settings: 'cv11', 'ss01';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  
+  /* Improved button cursor */
+  button {
     cursor: pointer;
+  }
+  
+  /* Better focus styles */
+  :focus {
+    outline: 2px solid theme('colors.primary.500');
+    outline-offset: 2px;
+  }
+  
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+  
+  /* Improved selection styles */
+  ::selection {
+    background-color: theme('colors.primary.100');
+    color: theme('colors.primary.900');
+  }
 }
 
-/* Add styles for react-icons */
-svg {
-    display: inline-block;
-    vertical-align: middle;
+/* Component layer for reusable patterns */
+@layer components {
+  /* Modern card component */
+  .card {
+    @apply bg-white/90 backdrop-blur-sm rounded-xl shadow-soft border border-white/20 p-6 transition-all duration-300 hover:shadow-medium hover:border-primary-200/50;
+  }
+  
+  .card-elevated {
+    @apply bg-white/95 backdrop-blur-md rounded-2xl shadow-medium border border-white/30 p-8 transition-all duration-300 hover:shadow-strong hover:border-primary-200/60;
+  }
+  
+  /* Modern button styles */
+  .btn-primary {
+    @apply bg-gradient-to-r from-primary-600 to-primary-700 text-white px-6 py-3 rounded-xl font-medium transition-all duration-300 hover:from-primary-700 hover:to-primary-800 hover:shadow-allied transform hover:scale-105 active:scale-95;
+  }
+  
+  .btn-secondary {
+    @apply bg-white/90 text-secondary-700 border border-secondary-200 px-6 py-3 rounded-xl font-medium transition-all duration-300 hover:bg-secondary-50 hover:border-secondary-300 hover:shadow-soft;
+  }
+  
+  .btn-ghost {
+    @apply text-secondary-600 px-4 py-2 rounded-lg font-medium transition-all duration-300 hover:bg-secondary-100 hover:text-secondary-700;
+  }
+  
+  /* Modern input styles */
+  .input-modern {
+    @apply bg-white/90 border border-secondary-200 rounded-xl px-4 py-3 text-secondary-700 placeholder-secondary-400 transition-all duration-300 focus:border-primary-500 focus:ring-4 focus:ring-primary-100 focus:bg-white;
+  }
+  
+  /* Glass morphism effect */
+  .glass {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 rounded-xl;
+  }
+  
+  .glass-strong {
+    @apply bg-white/20 backdrop-blur-lg border border-white/30 rounded-2xl;
+  }
+  
+  /* Gradient backgrounds */
+  .gradient-primary {
+    @apply bg-gradient-to-br from-primary-500 via-primary-600 to-primary-700;
+  }
+  
+  .gradient-secondary {
+    @apply bg-gradient-to-br from-secondary-100 via-secondary-200 to-secondary-300;
+  }
+  
+  .gradient-allied {
+    @apply bg-gradient-to-br from-allied-500 via-allied-600 to-allied-700;
+  }
+  
+  /* Hover effects */
+  .hover-lift {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-medium;
+  }
+  
+  .hover-scale {
+    @apply transition-all duration-300 hover:scale-105;
+  }
+  
+  /* Loading states */
+  .loading-skeleton {
+    @apply animate-pulse bg-secondary-200 rounded-lg;
+  }
+  
+  /* Navigation styles */
+  .nav-item {
+    @apply relative flex items-center space-x-3 px-4 py-3 rounded-xl text-secondary-600 transition-all duration-300 hover:bg-primary-50 hover:text-primary-700 group;
+  }
+  
+  .nav-item.active {
+    @apply bg-gradient-to-r from-primary-50 to-primary-100 text-primary-700 shadow-soft border-l-4 border-primary-500;
+  }
+  
+  /* Status badges */
+  .badge-success {
+    @apply bg-success-100 text-success-700 px-3 py-1 rounded-full text-sm font-medium;
+  }
+  
+  .badge-warning {
+    @apply bg-warning-100 text-warning-700 px-3 py-1 rounded-full text-sm font-medium;
+  }
+  
+  .badge-error {
+    @apply bg-error-100 text-error-700 px-3 py-1 rounded-full text-sm font-medium;
+  }
+  
+  /* Improved React Icons styles */
+  .react-icons {
+    @apply inline-flex items-center justify-center;
+  }
+  
+  svg {
+    @apply inline-block align-middle;
+  }
 }
 
-.react-icons {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+/* Utilities layer */
+@layer utilities {
+  /* Text gradient utilities */
+  .text-gradient-primary {
+    @apply bg-gradient-to-r from-primary-600 to-primary-800 bg-clip-text text-transparent;
+  }
+  
+  .text-gradient-allied {
+    @apply bg-gradient-to-r from-allied-600 to-allied-800 bg-clip-text text-transparent;
+  }
+  
+  /* Animation utilities */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.2s ease-out;
+  }
+  
+  /* Scrollbar utilities */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: theme('colors.primary.300') theme('colors.secondary.100');
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-track {
+    @apply bg-secondary-100 rounded-full;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply bg-primary-300 rounded-full hover:bg-primary-400;
+  }
 }
+
+/* Quill editor improvements */
 .quill .ql-container {
   height: auto !important;
   min-height: 200px;
+  border-radius: 0 0 12px 12px;
+  border: 1px solid theme('colors.secondary.200');
 }
+
 .quill .ql-editor {
   height: auto !important;
   overflow: visible !important;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.quill .ql-toolbar {
+  border-radius: 12px 12px 0 0;
+  border: 1px solid theme('colors.secondary.200');
+  background: theme('colors.secondary.50');
 }
 
 .ql-size .ql-picker-item.custom-size-item::before {
   content: attr(data-value);
 }
+
 .ql-picker-options {
   z-index: 9999 !important;
+  border-radius: 8px;
+  border: 1px solid theme('colors.secondary.200');
+  background: white;
+  box-shadow: theme('boxShadow.medium');
+  max-height: 140px;
+  overflow-y: auto;
 }
 
 .ql-toolbar {
   position: relative;
   z-index: 10;
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .card {
+    @apply p-4;
+  }
+  
+  .card-elevated {
+    @apply p-6;
+  }
 }

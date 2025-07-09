@@ -19,9 +19,22 @@ function App() {
   const contentMarginLeft = isSidebarCollapsed ? "ml-28" : "ml-72";
 
   return (
-    <div className="h-[100vh]">
-      <Toaster position="top-center" reverseOrder={false} />
-      <div className="flex flex-col">
+    <div className="app-container">
+      <Toaster 
+        position="top-center" 
+        reverseOrder={false}
+        toastOptions={{
+          className: 'toast-container',
+          style: {
+            background: 'rgba(255, 255, 255, 0.95)',
+            backdropFilter: 'blur(8px)',
+            borderRadius: '12px',
+            border: '1px solid rgba(255, 255, 255, 0.2)',
+            boxShadow: '0 8px 30px 0 rgba(0, 0, 0, 0.12)',
+          },
+        }}
+      />
+      <div className="flex flex-col relative z-10">
         {isNavbarShow && (
           <div className="fixed w-full top-0 z-50">
             <TopNavbar />
@@ -30,7 +43,7 @@ function App() {
         <div className="flex w-full">
           {isNavbarShow && (
             <div
-              className={`fixed top-[90px] h-full overflow-scroll z-40 sidebar-scroll ${sidebarWidth}`}
+              className={`fixed top-[90px] h-full overflow-scroll z-40 sidebar-scroll ${sidebarWidth} transition-all duration-300`}
             >
               <Sidebar
                 isOpen={isSidebarOpen}
@@ -43,7 +56,7 @@ function App() {
             </div>
           )}
           <div
-            className={`w-full bg-gray-100 transition-all duration-300 ${
+            className={`w-full content-area transition-all duration-500 ${
               isNavbarShow ? `${contentMarginLeft} pt-[90px]` : ""
             }`}
           >
